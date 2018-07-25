@@ -6,7 +6,18 @@ var cors = require('cors');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
+var os = require('os');
 
+var directory;
+
+if (os.hostname().indexOf("local") > -1){
+  directory = 'Prod/';
+}
+else{
+  directory = '';
+}
+// var directory = '';
+// var directory = 'Prod/';
 var location = '/views/src/';
 
 app.use(cors());
@@ -17,21 +28,21 @@ app.engine('html', ejs.renderFile);
 
 // index page 
 app.get('/', function(req, res) {
-	res.render('pages/index.html');
+	res.render(directory + 'pages/index.html');
 });
 
 // about page 
 app.get('/about', function(req, res) {
-	res.render('pages/about.html');
+	res.render(directory + 'pages/about.html');
 });
 
 app.use(express.static(__dirname + location));
 // 404
 app.get('*', function(req, res){
-	res.render('pages/404.html');
+	res.render(directory + 'pages/404.html');
 	});
 	
 app.listen(8080);
 console.log('8080 is the magic port');
-
+console.log(os.hostname().indexOf("local") > -1);
 module.exports = app;
