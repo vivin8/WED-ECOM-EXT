@@ -12,7 +12,7 @@ var os = require('os');
 var baseURL = '';
 if (process.env['LAMBDA']){
   app.set('base', '/Prod')
-  baseURL = 'Prod/';
+  baseURL = 'Prod';
 }
 // else{
 //   directory = '';
