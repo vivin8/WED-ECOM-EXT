@@ -9,10 +9,11 @@ var fs = require('fs');
 var os = require('os');
 
 // var directory;
-var baseURL = '';
+// var baseURL = '';
+var base = 'Prod';
 if (process.env['LAMBDA']){
   app.set('base', '/Prod')
-  baseURL = 'Prod';
+  base = 'Prod';
 }
 // else{
 //   directory = '';
@@ -29,20 +30,20 @@ app.engine('html', ejs.renderFile);
 
 // index page 
 app.get('/', function(req, res) {
-	res.render('pages/index.html', {baseURL});
+	res.render('pages/index.html', {baseURL:base});
 	// res.render('pages/index.html');
 });
 
 // about page 
 app.get('/about', function(req, res) {
-	res.render('pages/about.html', {baseURL});
+	res.render('pages/about.html', {baseURL:base});
 	// res.render('pages/about.html');
 });
 
 app.use(express.static(__dirname + location));
 // 404
 app.get('*', function(req, res){
-	res.render('pages/404.html', {baseURL});
+	res.render('pages/404.html', {baseURL:base});
 	// res.render('pages/404.html');
 	});
 	
