@@ -9,8 +9,8 @@ var fs = require('fs');
 var os = require('os');
 
 // var directory;
-// var baseURL = '';
-var base = 'Prod';
+var base = '';
+// var base = 'Prod';
 if (process.env['LAMBDA']){
   app.set('base', '/Prod')
   base = 'Prod';
