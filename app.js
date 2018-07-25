@@ -13,7 +13,7 @@ var base = '';
 // var base = 'Prod';
 if (process.env['LAMBDA']){
   app.set('base', '/Prod')
-  base = 'Prod';
+  base = '/Prod';
 }
 // else{
 //   directory = '';
