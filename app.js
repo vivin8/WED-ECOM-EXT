@@ -29,18 +29,18 @@ app.engine('html', ejs.renderFile);
 
 // index page 
 app.get('/', function(req, res) {
-	res.render('pages/index.html');
+	res.render('./pages/index.html');
 });
 
 // about page 
 app.get('/about', function(req, res) {
-	res.render('pages/about.html');
+	res.render('./pages/about.html');
 });
 
 app.use(express.static(__dirname + location));
 // 404
 app.get('*', function(req, res){
-	res.render('pages/404.html');
+	res.render('./pages/404.html');
 	});
 	
 app.listen(8080);
